@@ -1,0 +1,63 @@
+---
+- set_fact:
+    real_ansible_host: "{{ ansible_host }}"
+
+# - name: 'Configure WIFI'
+# copy: src=./wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
+- name: 'Update APT package cache'
+  action: apt update_cache=yes
+
+- name: setup apt
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - python-apt
+
+- name: Install a list of packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - ffmpeg
+    - python-configobj
+    - python-dateutil
+    # - python-pycurl
+    - python-flask
+    - python-sqlalchemy
+    - python-sdnotify
+    - git
+
+# - name: 'Update APT package cache'
+#   action: apt update_cache=yes
+
+- name: 'Copy interview test file'
+  copy: src=./interview.txt dest=/home/ubuntu/interview.txt mode=0600
+  tags:
+          -cptxt
+
+- name: 'Copy bash history test file'
+  copy: >
+          src=./bash_history
+          dest=/home/ubuntu/.bash_history
+          mode=0600
+          force=yes
+  become_user: ubuntu
+  tags:
+          -cptxt
+
+# - name: update bash history
+#   shell: 'history -r'
+#   become_user: ubuntu
+#   args:
+#     executable: /bin/bash
+#   tags:
+#           -cptxt
+
+- name: "Install PyCA from git"
+  git: >
+          repo=https://github.com/opencast/pyCA.git
+          dest=/home/ubuntu/pyCA
+  become_user: ubuntu
+  tags:
+          - pyca
