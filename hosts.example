@@ -1,0 +1,12 @@
+[webservers]
+raspberrypi.local new_hostname=raspberrypi
+raspberrypi1.local new_hostname=raspberrypi1
+raspberrypi2.local new_hostname=raspberrypi2
+raspberrypi3.local new_hostname=raspberrypi3
+raspberrypi4.local new_hostname=raspberrypi4
+raspberrypi5.local new_hostname=raspberrypi5
+raspberrypi6.local new_hostname=raspberrypi6
+raspberrypi7.local new_hostname=raspberrypi7
+raspberrypi8.local new_hostname=raspberrypi8
+raspberrypi9.local new_hostname=raspberrypi9
+raspberrypi10.local new_hostname=raspberrypi10

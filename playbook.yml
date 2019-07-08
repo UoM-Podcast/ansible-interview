@@ -1,0 +1,9 @@
+---
+
+- name: Ansible Playbook for configuring interview AWS EC2 instance
+
+  hosts: webservers
+  roles:
+    - pi
+  remote_user: ubuntu
+  become: yes
