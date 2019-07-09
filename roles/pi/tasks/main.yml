@@ -2,8 +2,6 @@
 - set_fact:
     real_ansible_host: "{{ ansible_host }}"
 
-# - name: 'Configure WIFI'
-# copy: src=./wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
 - name: 'Update APT package cache'
   action: apt update_cache=yes
 
@@ -22,14 +20,16 @@
     - ffmpeg
     - python-configobj
     - python-dateutil
-    # - python-pycurl
+    - python-pycurl
     - python-flask
     - python-sqlalchemy
     - python-sdnotify
     - git
 
-# - name: 'Update APT package cache'
-#   action: apt update_cache=yes
+- name: Remove "python-pycurl" package
+  apt:
+    name: python-pycurl
+    state: absent
 
 - name: 'Copy interview test file'
   copy: src=./interview.txt dest=/home/ubuntu/interview.txt mode=0600
