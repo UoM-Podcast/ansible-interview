@@ -36,6 +36,11 @@
   tags:
           -cptxt
 
+- name: 'Copy test.conf test file'
+  copy: src=./test.conf dest=/home/ubuntu/test.conf mode=0600
+  tags:
+          -cptxt
+
 - name: 'Copy bash history test file'
   copy: >
           src=./bash_history
